@@ -21,7 +21,18 @@ const getAllPosts = async (payload: Prisma.PostCreateInput) => {
   return results;
 };
 
+const getPostById = async (id: number) => {
+  const result = await prisma.post.findUnique({
+    where: {
+      id,
+    },
+    include: { author: true },
+  });
+  return result;
+};
+
 export const PostServise = {
   createPost,
   getAllPosts,
+  getPostById,
 };

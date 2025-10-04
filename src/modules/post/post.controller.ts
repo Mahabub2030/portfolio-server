@@ -17,7 +17,16 @@ const getAllPosts = async (req: Request, res: Response) => {
     console.log(error);
   }
 };
+const getPostById = async (req: Request, res: Response) => {
+  try {
+    const result = await PostServise.getPostById(Number(req.params.id));
+    res.status(201).json(result);
+  } catch (error) {
+    console.log(error);
+  }
+};
 export const PostController = {
   createPost,
   getAllPosts,
+  getPostById,
 };
