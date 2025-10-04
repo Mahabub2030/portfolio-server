@@ -11,7 +11,7 @@ const createPost = async (req: Request, res: Response) => {
 };
 const getAllPosts = async (req: Request, res: Response) => {
   try {
-    const result = await PostServise.createPost(req.body);
+    const result = await PostServise.getAllPosts(req.body);
     res.status(201).json(result);
   } catch (error) {
     console.log(error);

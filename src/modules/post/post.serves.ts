@@ -8,7 +8,17 @@ const createPost = async (payload: Prisma.PostCreateInput): Promise<Post> => {
   return result;
 };
 const getAllPosts = async (payload: Prisma.PostCreateInput) => {
-  const result = await prisma.post.findMany();
+  const results = await prisma.post.findMany({
+    select: {
+      id: true,
+      slug: true,
+      title: true,
+      content: true,
+      excerpt: true,
+      tags: true,
+    },
+  });
+  return results;
 };
 
 export const PostServise = {
