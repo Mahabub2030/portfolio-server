@@ -5,6 +5,8 @@ const router = express.Router();
 
 router.get("/", PostController.getAllPosts);
 router.get("/:id", PostController.getPostById);
+router.patch("/:id", PostController.updatePost);
+router.delete("/:id", PostController.deletePost);
 router.post("/", PostController.createPost);
 
 export const postRouter = router;

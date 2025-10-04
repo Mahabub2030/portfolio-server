@@ -25,8 +25,20 @@ const getPostById = async (req: Request, res: Response) => {
     console.log(error);
   }
 };
+
+const updatePost = async (req: Request, res: Response) => {
+  const post = await PostServise.updatePost(Number(req.params.id), req.body);
+  res.json(post);
+};
+const deletePost = async (req: Request, res: Response) => {
+  await PostServise.deletePost(Number(req.params.id));
+  res.json({ message: "Post deleted" });
+};
+
 export const PostController = {
   createPost,
   getAllPosts,
   getPostById,
+  updatePost,
+  deletePost,
 };
