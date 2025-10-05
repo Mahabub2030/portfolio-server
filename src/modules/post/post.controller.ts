@@ -11,7 +11,10 @@ const createPost = async (req: Request, res: Response) => {
 };
 const getAllPosts = async (req: Request, res: Response) => {
   try {
-    const result = await PostServise.getAllPosts(req.body);
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 10;
+    const search = (req.query.search as string) || "";
+    const result = await PostServise.getAllPosts({ page, limit, search });
     res.status(201).json(result);
   } catch (error) {
     console.log(error);
